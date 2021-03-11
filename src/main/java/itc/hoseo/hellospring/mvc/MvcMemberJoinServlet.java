@@ -19,14 +19,11 @@ public class MvcMemberJoinServlet extends HttpServlet{
 		
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		final String viewPath = "/WEB-INF/jsp/mvc-member-form.jsp";
-		RequestDispatcher dispatcher = req.getRequestDispatcher(viewPath);
-		dispatcher.forward(req, resp);
+		// TODO :: 코딩해보세요
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		memberRepository.save(new Member(req.getParameter("name"), Integer.parseInt(req.getParameter("age"))));
-		resp.sendRedirect("/mvc/members");
+		// TODO :: 코딩해보세요
 	}
 }

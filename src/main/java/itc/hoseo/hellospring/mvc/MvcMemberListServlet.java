@@ -13,19 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.util.StringUtils;
 
 import itc.hoseo.hellospring.domain.Member;
+import itc.hoseo.hellospring.repository.MemberRepository;
 import itc.hoseo.hellospring.repository.impl.HashMapMemberRepository;
 
 @WebServlet(name = "mvcMemberListServlet", urlPatterns = "/mvc/members")
 public class MvcMemberListServlet extends HttpServlet{
-	private final HashMapMemberRepository memberRepository = HashMapMemberRepository.getInstance();
+	private final MemberRepository memberRepository = HashMapMemberRepository.getInstance();
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		final String viewPath = "/WEB-INF/jsp/mvc-members.jsp";
-		
-		req.setAttribute("members", memberRepository.findAll());
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher(viewPath);
-		dispatcher.forward(req, resp);
+		// TODO :: 코딩해보세요
 	}
 }

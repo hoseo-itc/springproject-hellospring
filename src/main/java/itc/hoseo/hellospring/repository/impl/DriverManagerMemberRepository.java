@@ -45,71 +45,23 @@ public class DriverManagerMemberRepository implements MemberRepository {
 	}
 
 	public Member save(Member member) {
-
-		try (Connection con = DriverManager.getConnection(JDBC_URL, USER_NAME, "");
-				PreparedStatement pstmt = con.prepareStatement("insert into member(name, age) values(?,?)",
-						Statement.RETURN_GENERATED_KEYS);) {
-			pstmt.setString(1, member.getName());
-			pstmt.setInt(2, member.getAge());
-			pstmt.executeUpdate();
-
-			// 자동 생성된 PK를 가져옴
-			try (ResultSet rs = pstmt.getGeneratedKeys()) {
-				if (rs.next()) {
-					member.setId(rs.getInt(1));
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return member;
+		// TODO :: DB에 회원 저장
+		throw new IllegalStateException("구현되지 않은 기능입니다.");
 	}
 
 	public List<Member> findAll() {
-		List<Member> rslt = new ArrayList<>();
-
-		try (Connection con = DriverManager.getConnection(JDBC_URL, USER_NAME, "");
-				Statement stmt = con.createStatement();
-				ResultSet rs = stmt.executeQuery("select * from member")) {
-
-			while (rs.next()) {
-				Member m = new Member(rs.getInt(1), rs.getString(2), rs.getInt(3));
-				rslt.add(m);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return rslt;
+		// TODO :: DB에서 회원 전체 목록 조회
+		throw new IllegalStateException("구현되지 않은 기능입니다.");
 	}
 
 	public Member findById(Integer id) {
-		Member findMember = null;
-		try (Connection con = DriverManager.getConnection(JDBC_URL, USER_NAME, "");
-				PreparedStatement pstmt = con.prepareStatement("select * from member where id = ?");) {
-			pstmt.setInt(1, id);
-			
-			
-			try(ResultSet rs = pstmt.executeQuery()){
-				while (rs.next()) {
-					findMember = new Member(rs.getInt(1), rs.getString(2), rs.getInt(3));
-				}
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return findMember;
+		// TODO :: DB에서 특정 ID 회원 조회
+		throw new IllegalStateException("구현되지 않은 기능입니다.");
 	}
 
 	public void clear() {
-		try (Connection con = DriverManager.getConnection(JDBC_URL, USER_NAME, "");
-				PreparedStatement pstmt = con.prepareStatement("delete from member")) {
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		// TODO :: Member 테이블 전체 레코드 삭제
+		throw new IllegalStateException("구현되지 않은 기능입니다.");
 	}
 
 }
