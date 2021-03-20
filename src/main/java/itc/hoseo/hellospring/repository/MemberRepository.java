@@ -5,6 +5,7 @@ import java.util.List;
 import itc.hoseo.hellospring.domain.Member;
 
 public interface MemberRepository {
+	
 	public Member save(Member member);
 		
 	public List<Member> findAll();

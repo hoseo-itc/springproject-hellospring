@@ -14,7 +14,7 @@ import itc.hoseo.hellospring.repository.impl.HashMapMemberRepository;
 
 public class MemberRepositoryTest {
 
-	private MemberRepository repository = DriverManagerMemberRepository.getInstance();
+	private MemberRepository repository = HashMapMemberRepository.getInstance();
 	
 	@AfterEach
 	public void clearRepository() {
@@ -22,6 +22,19 @@ public class MemberRepositoryTest {
 	}
 	
 	@Test
+	public void save(){
+		//given
+		Member m1 = new Member("학생1", 10);
+		
+		//when
+		Member savedMember = repository.save(m1);
+		
+		//then
+		assertThat(savedMember.getId()).isEqualTo(1);
+	}
+	
+	
+	//@Test
 	public void findAll(){
 		//given
 		Member m1 = new Member("학생1", 10);
@@ -37,7 +50,7 @@ public class MemberRepositoryTest {
 		assertThat(list).contains(m1, m2);
 	}
 	
-	@Test
+	//@Test
 	public void findById(){
 		//given
 		Member m1 = new Member("학생1", 10);
