@@ -44,6 +44,7 @@ public class HashMapMemberRepository implements MemberRepository {
 	 * 회원 저장소 초기화
 	 */
 	public void clear() {
+		//add comment
 		memberMap.clear();
 	}
 	
