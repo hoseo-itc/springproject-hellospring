@@ -1,5 +1,6 @@
 package itc.hoseo.hellospring.repository.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,8 +15,6 @@ import itc.hoseo.hellospring.repository.MemberRepository;
 public class HashMapMemberRepository implements MemberRepository {
 
 	private static HashMapMemberRepository instance = new HashMapMemberRepository();
-	
-	private HashMapMemberRepository() {}
 	
 	public static HashMapMemberRepository getInstance() {
 		return instance;
@@ -47,5 +46,21 @@ public class HashMapMemberRepository implements MemberRepository {
 		//add comment
 		memberMap.clear();
 	}
+
+//	@Override
+//	public List<Member> findByName(String name) {
+//		return memberMap.values()
+//			.parallelStream()
+//			.filter(m -> m.getName().contains(name))
+//			.collect(Collectors.toList());
+//		
+//		List<Member> result = new ArrayList<Member>();
+//		for(Member m : memberMap.values()) {
+//			if(m.getName().contains(name)) {
+//				result.add(m);
+//			}
+//		}
+//		return result;
+//	}
 	
 }

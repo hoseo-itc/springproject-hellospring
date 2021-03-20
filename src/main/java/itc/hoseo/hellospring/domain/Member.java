@@ -1,12 +1,11 @@
 package itc.hoseo.hellospring.domain;
 
-import lombok.EqualsAndHashCode;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
-@EqualsAndHashCode
+
+@Data
 public class Member {
 	private Integer id;
 	private String name;
@@ -14,15 +13,20 @@ public class Member {
 	
 	public Member() {}
 	
-	public Member(String name, Integer age) {
-		this.name = name;
-		this.age = age;
-	}
-
 	public Member(Integer id, String name, Integer age) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.age = age;
 	}
+
+
+
+	public Member(String name, Integer age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
+	
 	
 }
