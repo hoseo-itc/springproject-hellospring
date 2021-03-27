@@ -1,32 +1,22 @@
 package itc.hoseo.hellospring.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Data
 public class Member {
-	private Integer id;
+	private Integer seq;
+	private String id;
 	private String name;
+	private String password;
 	private Integer age;
 	
 	public Member() {}
 	
-	public Member(Integer id, String name, Integer age) {
-		super();
+	public Member(String id, String password) {
 		this.id = id;
-		this.name = name;
-		this.age = age;
+		this.password = password;
 	}
-
-
-
-	public Member(String name, Integer age) {
-		super();
-		this.name = name;
-		this.age = age;
-	}
-	
-	
 }

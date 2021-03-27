@@ -7,7 +7,6 @@ import itc.hoseo.hellospring.domain.Member;
 public interface MemberRepository {
 	public Member save(Member member);
 	public List<Member> findAll();
-	public Member findById(Integer id);
+	public Member findById(String id);
 	public void clear();	
-	//public List<Member> findByName(String name);
 }

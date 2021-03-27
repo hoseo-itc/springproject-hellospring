@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="memberRepo" 
+		class="itc.hoseo.hellospring.repository.impl.HashMapMemberRepository"
+		init-method="init" />
+
+	<bean id="loginLogRepo" class="itc.hoseo.hellospring.repository.impl.HashMapLoginLogRepository" />
+
+	<bean id="loginService" class="itc.hoseo.hellospring.service.LoginService">
+		<constructor-arg ref="loginLogRepo"/>
+		<constructor-arg ref="memberRepo"/>
+	</bean>
+
+</beans>
