@@ -18,7 +18,7 @@ public class LoginService {
 	private LoginLogRepository loginLogRepository;
 	private MemberRepository memberRepository;
 	
-	public LoginService(LoginLogRepository loginLogRepository,@Qualifier("") MemberRepository memberRepository) {
+	public LoginService(LoginLogRepository loginLogRepository, MemberRepository memberRepository) {
 		this.loginLogRepository = loginLogRepository;
 		this.memberRepository = memberRepository;
 	}

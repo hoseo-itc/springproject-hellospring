@@ -8,22 +8,16 @@ import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import itc.hoseo.hellospring.domain.Member;
 import itc.hoseo.hellospring.repository.MemberRepository;
 
-//@Repository
+@Repository
 public class HashMapMemberRepository implements MemberRepository {
 
-//	private static HashMapMemberRepository instance = new HashMapMemberRepository();
-//	
-//	public static HashMapMemberRepository getInstance() {
-//		return instance;
-//	}
-//	
-	
 	@PostConstruct
 	public void init() {
 		this.save(new Member("testMember","0000"));
