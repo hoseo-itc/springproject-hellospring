@@ -5,4 +5,10 @@ CREATE TABLE MEMBER (
   name varchar(255) not null,
   password varchar(255) not null,
   age int
+);
+
+CREATE TABLE INTEREST (
+  id varchar(255) not null,
+  name varchar(255) not null,
+  primary key(id,name)
 )

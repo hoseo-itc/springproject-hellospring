@@ -19,4 +19,22 @@ public class Member {
 		this.id = id;
 		this.password = password;
 	}
+
+	public Member(String id, String name, String password) {
+		this.id = id;
+		this.name = name;
+		this.password = password;
+	}
+
+	public Member(Integer seq, String id, String name, String password, Integer age) {
+		this.seq = seq;
+		this.id = id;
+		this.name = name;
+		this.password = password;
+		this.age = age;
+	}
+	
+	
+	
+	
 }
