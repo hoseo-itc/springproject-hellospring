@@ -1,5 +1,7 @@
 package itc.hoseo.hellospring.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,23 +25,31 @@ public class MemberService {
 	@Autowired
 	private InterestRepository interestRepository;
 
+	
+	public boolean login(String id, String password) {
+		Member findMember = memberRepository.findById(id);
+		if(findMember == null 
+				|| findMember.getPassword().equals(password) == false) {
+			return false;
+		}
+		return true;
+	}
+	
 	@Transactional
 	public void join(Member member, Interest... interests ) {
-		if(log.isDebugEnabled()) {
-			log.debug("저장맴버 : {}", member.toString());
-		}
-
 		memberRepository.save(member);
-		
-		if(interests.length == 0) {
-			throw new RuntimeException("한개 이상의 관심분야를 입력하여주세요");
-		}
-		for(Interest i : interests) {
-			interestRepository.save(i); 
-		}
 	}
 	
 	public int countMembers() {
 		return memberRepository.findAll().size();
 	}
+	
+	public List<Member> findAll(){
+		return memberRepository.findAll();
+	}
+	
+	public Member findById(String id) {
+		return memberRepository.findById(id);
+	}
+	
 }
