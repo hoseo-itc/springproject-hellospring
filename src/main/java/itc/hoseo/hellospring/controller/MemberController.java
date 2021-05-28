@@ -1,10 +1,13 @@
 package itc.hoseo.hellospring.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
+import itc.hoseo.hellospring.domain.LoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,15 +22,21 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@PostMapping("/login")
-	public String login(
-			@RequestParam("id") String id,
-			@RequestParam("password") String pw, 
-			HttpSession session) {
-		
-		if(memberService.login(id, pw) == false) {
+	public String login(@Valid LoginDTO loginDTO,
+						BindingResult bindingResult,
+						ModelMap mm,
+						HttpSession session) {
+
+		if(bindingResult.hasErrors()){
+			mm.put("memberList", memberService.findAll());
+			return "member/list";
+		}
+
+
+		if(memberService.login(loginDTO.getId(), loginDTO.getPassword()) == false) {
 			return "redirect:https://http.cat/400";
 		}
-		session.setAttribute("loginMember", memberService.findById(id));
+		session.setAttribute("loginMember", memberService.findById(loginDTO.getId()));
 		return "redirect:/list";
 	}
 	
@@ -45,6 +54,7 @@ public class MemberController {
 	@GetMapping("/list")
 	public String list(ModelMap mm) {
 		mm.put("memberList", memberService.findAll());
+		mm.put("loginDTO", new LoginDTO());
 		return "member/list";
 	}
 	

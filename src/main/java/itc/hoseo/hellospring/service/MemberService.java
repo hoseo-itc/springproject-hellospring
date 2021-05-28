@@ -14,9 +14,12 @@ import itc.hoseo.hellospring.domain.Member;
 import itc.hoseo.hellospring.repository.InterestRepository;
 import itc.hoseo.hellospring.repository.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.Valid;
 
 @Service
-
+@Validated
 @Slf4j
 public class MemberService {
 	@Autowired
@@ -36,7 +39,7 @@ public class MemberService {
 	}
 	
 	@Transactional
-	public void join(Member member, Interest... interests ) {
+	public void join(@Valid  Member member, Interest... interests ) {
 		memberRepository.save(member);
 	}
 	

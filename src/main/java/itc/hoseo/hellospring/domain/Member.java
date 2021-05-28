@@ -1,15 +1,24 @@
 package itc.hoseo.hellospring.domain;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotBlank;
 
 @Data
+@Builder
 public class Member {
 	private Integer seq;
+
+	@NotBlank
+	@Length(max = 64)
 	private String id;
+
+	@NotBlank
 	private String name;
+
+	@NotBlank
+	@Length(min = 9, max = 24)
 	private String password;
 	private Integer age;
 	
