@@ -33,4 +33,8 @@ public class Member {
 		this.password = password;
 		this.age = age;
 	}
+	
+	
+	
+	
 }

@@ -10,5 +10,5 @@ CREATE TABLE MEMBER (
 CREATE TABLE INTEREST (
   id varchar(255) not null,
   name varchar(255) not null,
-  primary key (id,name)
-);
+  primary key(id,name)
+)

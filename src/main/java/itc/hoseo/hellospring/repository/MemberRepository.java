@@ -1,5 +1,6 @@
 package itc.hoseo.hellospring.repository;
 
+import java.sql.Connection;
 import java.util.List;
 
 import itc.hoseo.hellospring.domain.Member;

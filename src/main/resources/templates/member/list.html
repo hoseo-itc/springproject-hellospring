@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>회원가입</title>
+</head>
+<body>
+	
+
+	<div th:if="${session.loginMember}" 
+		th:text="|${session.loginMember.name}님 환영합니다!|"></div>
+	<form th:unless="${session.loginMember}" action="login" method="post">
+		ID : <input type="text" name="id" />
+		PW : <input type="text" name="password" />
+		<input type="submit" >
+	</form>
+	
+	<table>
+		<tr>
+			<td>순번</td>
+			<td>ID</td>
+			<td>이름</td>
+		</tr>
+		<tr th:each="m: ${memberList}">
+		    <td th:text="${m.seq}" />
+		    <td th:text="${m.id}" />
+		    <td th:text="${m.name}" />
+		</tr>		
+	</table>
+	
+	<p><a href="join">회원가입</a></p>
+</body>
+</html>
+
+

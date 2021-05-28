@@ -1,12 +1,12 @@
 package itc.hoseo.hellospring.repository;
 
+import java.sql.Connection;
+import java.util.List;
+
 import itc.hoseo.hellospring.domain.Interest;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public class InterestRepository {
+public interface InterestRepository {
+	public void save(Interest interest);
 
-    public void save(Interest interest) {
-        //:: TODO DB에 저장하세용!
-    }
+	public List<Interest> findById(String id);
 }
